@@ -9,13 +9,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: "lts/hydrogen"
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      - run: npm run lint:prettier:check
+      - name: Run Prettier
+        run: npm run lint:prettier:check
 
   eslint:
     name: Eslint
@@ -23,10 +26,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: "lts/hydrogen"
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      - run: npm run lint:eslint:check
+      - name: Run ESLint
+        run: npm run lint:eslint:check
+
+  commitlint:
+    name: commitlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/hydrogen"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check all commit messages from the Pull Request
+        run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
