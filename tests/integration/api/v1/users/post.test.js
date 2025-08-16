@@ -48,7 +48,7 @@ describe("POST api/v1/users", () => {
         },
         body: JSON.stringify({
           username: "emailduplicado1",
-          email: "duplicado@gmail.com",
+          email: "duplicado@teste.com",
           password: "senha123",
         }),
       });
@@ -62,7 +62,7 @@ describe("POST api/v1/users", () => {
         },
         body: JSON.stringify({
           username: "emailduplicado2",
-          email: "Duplicado@gmail.com",
+          email: "Duplicado@teste.com",
           password: "senha123",
         }),
       });
@@ -87,7 +87,7 @@ describe("POST api/v1/users", () => {
         },
         body: JSON.stringify({
           username: "usernameduplicado",
-          email: "usernameduplicado1@gmail.com",
+          email: "usernameduplicado1@teste.com",
           password: "senha123",
         }),
       });
@@ -101,7 +101,7 @@ describe("POST api/v1/users", () => {
         },
         body: JSON.stringify({
           username: "UsernameDuplicado",
-          email: "usernameduplicado2@gmail.com",
+          email: "usernameduplicado2@teste.com",
           password: "senha123",
         }),
       });
