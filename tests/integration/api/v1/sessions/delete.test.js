@@ -101,6 +101,7 @@ describe("DELETE api/v1/sessions", () => {
         responseBody.updated_at > sessionObject.updated_at.toISOString(),
       ).toBe(true);
 
+      // Set-Cookie assertions
       const parsedSetCookie = setCookieParser(response, {
         map: true,
       });
